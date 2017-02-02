@@ -28,15 +28,16 @@ class NewVisitorTest(unittest.TestCase):
         )
 
         # "공작깃털 사기"라고 텍스트 상자에 입력한다.
-        inputbox.sent_keys('공작깃털 사기')
+        inputbox.send_keys('공작깃털 사기')
 
         # 엔터키를 치면 페이지가 갱신되고 작업목록에 "1: 공작깃털 사기" 아이템이 추가된다.
-        inputbox.sent_keys(Keys.ENTER)
+        inputbox.send_keys(Keys.ENTER)
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
             any(row.text == '1: 공작깃털 사기' for row in rows),
+            "신규 작업이 테이블에 표시되지 않습니다."
         )
 
         # 추가 아이템을 입력할 수 있는 여분의 텍스트 상자가 존재한다.
