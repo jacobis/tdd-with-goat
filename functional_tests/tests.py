@@ -40,6 +40,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # 엔터키를 치면 페이지가 갱신되고 작업목록에 "1: 공작깃털 사기" 아이템이 추가된다.
         inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')
         self.check_for_row_in_list_table('1: 공작깃털 사기')
@@ -71,6 +72,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('우유 사기')
         inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
 
         # 프란시스가 전용 URL을 취득한다.
         francis_list_url = self.browser.current_url
