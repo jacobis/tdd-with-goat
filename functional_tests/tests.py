@@ -1,10 +1,10 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import unittest
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -32,7 +32,7 @@ class NewVisitorTest(LiveServerTestCase):
         # 그녀는 바로 작업을 추가하기로 한다.
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(
-            inputbox.get_attribute('placeholder'), '작업 아이템 입력'
+            inputbox.get_attribute('placeholder'), 'Enter a to-do item'
         )
 
         # "공작깃털 사기"라고 텍스트 상자에 입력한다.
